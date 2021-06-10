@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "filesystem",
+  "libraries": [
+    {
+      "library": "node_modules/@fortawesome/fontawesome-free/webfonts/",
+      "destination": "wwwroot/fonts"
+    }
+  ]
+}

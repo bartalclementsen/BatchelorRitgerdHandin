@@ -1,0 +1,29 @@
+﻿@import "../variables";
+
+.tv-body {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    top: 140px;
+    bottom: 20px;
+    display: flex;
+
+    .tv-body-left {
+        display: flex;
+        -ms-flex-flow: column;
+        -webkit-flex-flow: column;
+        flex-flow: column;
+        overflow: auto;
+
+        .tv-body-left-fill {
+            -ms-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            overflow: auto;
+        }
+    }
+
+    .tv-body-right {
+        width: 500px;
+    }
+}

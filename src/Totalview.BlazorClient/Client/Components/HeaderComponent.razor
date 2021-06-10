@@ -1,0 +1,18 @@
+﻿@namespace Totalview.BlazorClient.Client.Components
+@inherits MvvmComponentBase<HeaderViewModel>
+
+<div class="tv-header">
+    <div class="tv-header-inner">
+        <div class="profile-image">
+            <i class="fas fa-user"></i>
+        </div>
+
+        <div class="user-info">
+            <div class="user-info-name">@ViewModel.FullName</div>
+            <div class="user-info-state">
+                <span class="user-info-state-color" style="background-color:@ViewModel.CurrentStateColor;">&nbsp;</span>
+                @ViewModel.CurrentStateText
+            </div>
+        </div>
+    </div>
+</div>

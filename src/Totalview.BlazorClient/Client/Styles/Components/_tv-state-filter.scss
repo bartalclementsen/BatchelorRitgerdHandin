@@ -1,0 +1,35 @@
+﻿@import "../variables";
+
+.tv-state-filter {
+    select {
+        width: 100%;
+        border: 0;
+        overflow-y: auto;
+
+        &:focus {
+            outline: none;
+        }
+
+        option {
+
+            &:focus,
+            &:active {
+                color: black !important;
+                background: blue;
+                box-shadow: none;
+                background: linear-gradient(#d6d6d6, #d6d6d6);
+                background-color: #d6d6d6 !important; /* for IE */
+            }
+
+
+            &:checked {
+                color: black !important;
+                background-color: transparent !important;
+                background: transparent !important;
+                /*box-shadow: none;
+                background: linear-gradient(#002d62, #002d62);
+                background-color: #002d62 !important;*/ /* for IE */
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto"; 
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "Totalview.Server";
+package totalview.v1;
+
+service TotalviewService {
+  rpc SetCurrentState (SetCurrentStateRequest) returns (SetCurrentStateResponse) {}
+  rpc Subscribe (SubscribeRequest) returns (stream TotalviewEvent) {}
+}
+message TotalviewEvent {
+    Verb verb = 1;
+    ReservationUserList reservationUserList = 2;
+    ResourceCollection resourceCollection = 3;
+    // ... omitted for brevity
+}
+message ResourceCollection {
+    repeated Resource Items = 1;
+}
+message Resource {
+    int32 recId = 1;
+    string userId = 2;
+    string firstName = 3;
+    string lastName = 4;
+    // ... omitted for brevity
+}

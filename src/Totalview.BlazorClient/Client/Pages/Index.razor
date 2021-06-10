@@ -1,0 +1,20 @@
+﻿@inherits MvvmComponentBase<IndexViewModel>
+@page "/"
+
+@*<p>AccessTokenResult Status @ViewModel.AccessTokenResult?.Status.ToString()</p>
+<p>AccessTokenResult RedirectUrl @ViewModel.AccessTokenResult?.RedirectUrl</p>
+<p>AccessToken GrantedScopes @string.Join(", ", (ViewModel.AccessToken?.GrantedScopes ?? new List<string>()))</p>
+<p>AccessToken Expires @ViewModel.AccessToken?.Expires</p>
+<p>AccessToken Value @ViewModel.AccessToken?.Value</p>
+<p>Identity AuthenticationType @ViewModel.Identity?.AuthenticationType</p>
+<p>Identity AuthenticationType @ViewModel.Identity?.IsAuthenticated</p>
+<p>Identity AuthenticationType @ViewModel.Identity?.Name</p>
+
+<ul>
+    @foreach (var claim in (ViewModel.Claims ?? new List<System.Security.Claims.Claim>()))
+    {
+        <li>@claim.Subject : @claim.Value</li>
+    }
+</ul>*@
+
+<Totalview.BlazorClient.Client.Components.MainComponent />

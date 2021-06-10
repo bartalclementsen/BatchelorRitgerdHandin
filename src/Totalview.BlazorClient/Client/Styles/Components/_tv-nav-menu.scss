@@ -1,0 +1,47 @@
+﻿@import "../variables";
+
+.tv-nav-menu {
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top: 110px;
+    height: 30px;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        height: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        padding-left: 10px;
+        padding-right: 30px;
+        padding-top: 5px;
+        padding-bottom: 4px;
+        white-space:nowrap;
+
+        i {
+            margin-right:5px;
+        }
+
+        &:hover {
+            background-color:#eeeeee;
+            cursor:pointer;
+        }
+
+        &:focus {
+            outline:none;
+        }
+
+
+    }
+}
+

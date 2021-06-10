@@ -1,0 +1,25 @@
+﻿@import "../variables";
+
+
+.tv-box-blue {
+    border-left: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+
+    .tv-box-blue-header {
+        background-color: #002d62;
+        color: #ffffff;
+        white-space: nowrap;
+        padding: 0px 5px 0px 4px;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        height: 19px;
+    }
+
+    .tv-box-blue-title {
+        font-size: 0.9em;
+    }
+
+    .tv-box-blue-content {
+    }
+}

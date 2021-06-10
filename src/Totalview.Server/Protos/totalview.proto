@@ -1,0 +1,708 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto"; 
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "Totalview.Server";
+package totalview.v1;
+
+service TotalviewService {
+
+  rpc GetAllAppointments(google.protobuf.Empty) returns (ReservationUserList) { }
+  rpc GetBasicData(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc SetEventsAccepted(SetEventsAcceptedRequest) returns (google.protobuf.Empty) {}
+  rpc GetUserImage(GetUserImageRequest) returns (google.protobuf.Empty) {}
+  rpc GetAllUserImages(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc GetUserNumberLog(GetUserNumberLogRequest) returns (google.protobuf.Empty) {}
+  rpc MakeCallFromNumberToNumber(MakeCallFromNumberToNumberRequest) returns (google.protobuf.Empty) {}
+
+  rpc SetCurrentState (SetCurrentStateRequest) returns (SetCurrentStateResponse) {}
+
+  rpc Subscribe (SubscribeRequest) returns (stream TotalviewEvent) {}
+}
+
+
+message SetEventsAcceptedRequest {
+    bool acccepted = 1;
+}
+
+message GetUserImageRequest {
+    int32 userRecId = 1;
+}
+
+message GetUserNumberLogRequest {
+    int32 userRecId = 1;
+    int32 maxResult = 2;
+}
+
+message MakeCallFromNumberToNumberRequest {
+    string fromNumber = 1;
+    string toNumber = 2;
+}
+
+message SetCurrentStateRequest {
+
+}
+
+message SetCurrentStateResponse {
+    Reservation reservattion = 1;
+    RequestStatus status = 2;
+    string error = 3;
+}
+
+enum RequestStatus {
+    REQUESTSTATUS_UNKNOWN = 0;
+    REQUESTSTATUS_SUCCESS = 1;
+    REQUESTSTATUS_ERROR = 2;
+}
+
+enum Verb {
+    VERB_UNKNOWN = 0;
+    VERB_POST = 1;
+    VERB_PUT = 2;
+    VERB_DELETE = 3;
+}
+
+message SubscribeRequest {
+
+}
+
+// GENERATED FROM KlassaGenerering
+message TotalviewEvent {
+    Verb verb = 1;
+    ReservationUserList reservationUserList = 2;
+    ResourceCollection resourceCollection = 3;
+    LyncStateCollection lyncStateCollection = 4;
+    SmallDeviceList smallDeviceList = 5;
+    LargeDeviceList largeDeviceList = 6;
+    ReservationCollection reservationCollection = 7;
+    StateCollection stateCollection = 8;
+    TemplateList templateList = 9;
+}
+
+enum CallStateEnum {
+  CALLSTATEENUM_IDLE = 0;
+  CALLSTATEENUM_INITIATED = 1;
+  CALLSTATEENUM_ALERTING = 2;
+  CALLSTATEENUM_CONNECTED = 3;
+  CALLSTATEENUM_QUEUED = 4;
+  CALLSTATEENUM_ERROR = 5;
+  CALLSTATEENUM_HOLD = 6;
+  CALLSTATEENUM_FAIL = 7;
+  CALLSTATEENUM_UNKNOWN = 8;
+  CALLSTATEENUM_OFFLINE = 9;
+}
+
+enum AgentStateEnum {
+  AGENTSTATEENUM_NULL = 0;
+  AGENTSTATEENUM_BUSY = 1;
+  AGENTSTATEENUM_NOTREADY = 2;
+  AGENTSTATEENUM_READY = 3;
+  AGENTSTATEENUM_WORKAFTERCALL = 4;
+}
+
+enum DeviceTypeEnum {
+  DEVICETYPEENUM_UNKNOWN = 0;
+  DEVICETYPEENUM_DEVICE = 1;
+  DEVICETYPEENUM_TRUNK = 2;
+  DEVICETYPEENUM_MOBILE = 3;
+  DEVICETYPEENUM_EXTERNAL = 4;
+}
+
+enum DeviceSubTypeEnum {
+  DEVICESUBTYPEENUM_UNKNOWN = 0;
+  DEVICESUBTYPEENUM_ACD = 1;
+  DEVICESUBTYPEENUM_GROUP = 2;
+  DEVICESUBTYPEENUM_TRUNK = 3;
+  DEVICESUBTYPEENUM_IPTRUNK = 4;
+  DEVICESUBTYPEENUM_SYSTEM = 5;
+  DEVICESUBTYPEENUM_DECT = 6;
+  DEVICESUBTYPEENUM_ANALOGORVIRTUAL = 7;
+  DEVICESUBTYPEENUM_ISDN = 8;
+  DEVICESUBTYPEENUM_VOICEUNIT = 9;
+  DEVICESUBTYPEENUM_OTHER = 10;
+}
+
+enum DeviceStateEnum {
+  DEVICESTATEENUM_NULL = 0;
+  DEVICESTATEENUM_NOTFOUND = 1;
+  DEVICESTATEENUM_CONNECTED = 2;
+  DEVICESTATEENUM_RUNNING = 3;
+  DEVICESTATEENUM_DISCONNECTED = 4;
+  DEVICESTATEENUM_ERROR = 5;
+}
+
+enum SuggestedRuleEnum {
+  SUGGESTEDRULEENUM_FIXED = 0;
+  SUGGESTEDRULEENUM_5MIN = 1;
+  SUGGESTEDRULEENUM_10MIN = 2;
+  SUGGESTEDRULEENUM_15MIN = 3;
+  SUGGESTEDRULEENUM_30MIN = 4;
+  SUGGESTEDRULEENUM_1H = 5;
+}
+
+enum SuggestedRoundTypeEnum {
+  SUGGESTEDROUNDTYPEENUM_REGULAR = 0;
+  SUGGESTEDROUNDTYPEENUM_UP = 1;
+  SUGGESTEDROUNDTYPEENUM_DOWN = 2;
+}
+
+enum ForwardTypeEnum {
+  FORWARDTYPEENUM_IGNORE = 0;
+  FORWARDTYPEENUM_NONE = 1;
+  FORWARDTYPEENUM_ALL = 2;
+  FORWARDTYPEENUM_EXTERNAL = 3;
+  FORWARDTYPEENUM_INTERNAL = 4;
+}
+
+enum DNDTypeEnum {
+  DNDTYPEENUM_IGNORE = 0;
+  DNDTYPEENUM_ON = 1;
+  DNDTYPEENUM_OFF = 2;
+}
+
+enum ResourceDetailLinkEnum {
+  RESOURCEDETAILLINKENUM_WRONGTYPE = 0;
+  RESOURCEDETAILLINKENUM_UNKNOWN = 1;
+  RESOURCEDETAILLINKENUM_LOCAL = 2;
+  RESOURCEDETAILLINKENUM_WORK = 3;
+  RESOURCEDETAILLINKENUM_HOME = 4;
+  RESOURCEDETAILLINKENUM_MOBILE = 5;
+  RESOURCEDETAILLINKENUM_FAX = 6;
+  RESOURCEDETAILLINKENUM_MAIL = 7;
+  RESOURCEDETAILLINKENUM_WEB = 8;
+  RESOURCEDETAILLINKENUM_OTHER = 9;
+  RESOURCEDETAILLINKENUM_MULAP = 10;
+  RESOURCEDETAILLINKENUM_SIPADDR = 11;
+}
+
+enum ReservationSettingTypeEnum {
+  RESERVATIONSETTINGTYPEENUM_START = 0;
+  RESERVATIONSETTINGTYPEENUM_END = 1;
+}
+
+enum AppointmentTypeEnum {
+  APPOINTMENTTYPEENUM_NORMAL = 0;
+  APPOINTMENTTYPEENUM_RECURRING = 1;
+}
+
+enum ReservationTypeEnum {
+  RESERVATIONTYPEENUM_CURRENT = 0;
+  RESERVATIONTYPEENUM_RESERVATION = 1;
+}
+
+enum ScopeTypeEnum {
+  SCOPETYPEENUM_PUBLIC = 0;
+  SCOPETYPEENUM_PRIVATE = 1;
+}
+
+enum ClientTypeEnum {
+  CLIENTTYPEENUM_CLIENT = 0;
+  CLIENTTYPEENUM_TERMINAL = 1;
+  CLIENTTYPEENUM_ADMIN = 2;
+  CLIENTTYPEENUM_SWITCHBOARD = 3;
+  CLIENTTYPEENUM_RECEPTIONIST = 4;
+  CLIENTTYPEENUM_PROVIDER = 5;
+  CLIENTTYPEENUM_PROXY = 6;
+  CLIENTTYPEENUM_CUSTOM = 7;
+  CLIENTTYPEENUM_SMARTCLIENT = 8;
+}
+
+enum OriginExecutionEnum {
+  ORIGINEXECUTIONENUM_UNKNOWN = 0;
+  ORIGINEXECUTIONENUM_SETCURRENT = 1;
+  ORIGINEXECUTIONENUM_APPPROMOTIN = 2;
+  ORIGINEXECUTIONENUM_APPEND = 3;
+  ORIGINEXECUTIONENUM_RESETATMIDNIGHT = 4;
+}
+
+enum EndTypeEnum {
+  ENDTYPEENUM_UNDEFINED = 0;
+  ENDTYPEENUM_EXPECTED = 1;
+  ENDTYPEENUM_ACTUAL = 2;
+}
+
+enum PendingStateEnum {
+  PENDINGSTATEENUM_NONE = 0;
+  PENDINGSTATEENUM_PENDINGCREATE = 1;
+  PENDINGSTATEENUM_PENDINGUPDATE = 2;
+  PENDINGSTATEENUM_PENDINGDELETE = 3;
+  PENDINGSTATEENUM_PENDINGCREATEFAIL = 4;
+  PENDINGSTATEENUM_PENDINGUPDATEFAIL = 5;
+  PENDINGSTATEENUM_PENDINGDELETEFAIL = 6;
+}
+
+enum NotifyCommandEnum {
+  NOTIFYCOMMANDENUM_SENDSTATICDATA = 0;
+  NOTIFYCOMMANDENUM_MAXIMIZESWITCHBOARD = 1;
+}
+
+enum EndingTimeEnum {
+  ENDINGTIMEENUM_NOREQUIRED = 0;
+  ENDINGTIMEENUM_SAMEDAY = 1;
+  ENDINGTIMEENUM_REQUIRED = 2;
+}
+
+enum StateLengthEnum {
+  STATELENGTHENUM_ONEDAY = 0;
+  STATELENGTHENUM_EXPECTEDEND = 1;
+  STATELENGTHENUM_UNTILANOTHERSTATE = 2;
+}
+
+enum EndStampEnum {
+  ENDSTAMPENUM_BEGINNING = 0;
+  ENDSTAMPENUM_END = 1;
+}
+
+enum StateTypeEnum {
+  STATETYPEENUM_USERSTATE = 0;
+  STATETYPEENUM_RESOURCESTATE = 1;
+  STATETYPEENUM_SYSTEMSTATE = 2;
+}
+
+enum StateClassEnum {
+  STATECLASSENUM_FREE = 0;
+  STATECLASSENUM_TENTATIVE = 1;
+  STATECLASSENUM_BUSY = 2;
+  STATECLASSENUM_OUTOFOFFICE = 3;
+}
+
+enum CallStatisticsTypeEnum {
+  CALLSTATISTICSTYPEENUM_IDLE = 0;
+  CALLSTATISTICSTYPEENUM_BUSY = 1;
+}
+
+enum ResourceDetailTypeEnum {
+  RESOURCEDETAILTYPEENUM_UNKNOWN = 0;
+  RESOURCEDETAILTYPEENUM_LINK = 1;
+}
+
+enum ExpectedResponse {
+  EXPECTEDRESPONSE_NONCEPWD = 0;
+  EXPECTEDRESPONSE_NONCE = 1;
+  EXPECTEDRESPONSE_PASSWORD = 2;
+  EXPECTEDRESPONSE_NOTHING = 3;
+  EXPECTEDRESPONSE_GLOBALPASSWORD = 4;
+}
+
+enum ResponseCoding {
+  RESPONSECODING_PLAIN = 0;
+  RESPONSECODING_MD5 = 1;
+  RESPONSECODING_SHA = 2;
+}
+
+enum ChallengeReason {
+  CHALLENGEREASON_LOGIN = 0;
+  CHALLENGEREASON_NOTAUTHENTICATED = 1;
+  CHALLENGEREASON_LICENSEPROBLEM = 2;
+  CHALLENGEREASON_TOOMANYTRIES = 3;
+  CHALLENGEREASON_AUTHENTICATED = 4;
+  CHALLENGEREASON_NOPRIVILEGE = 5;
+  CHALLENGEREASON_NOTWINAUTHENTICATED = 6;
+  CHALLENGEREASON_USERNOTACTIVE = 7;
+}
+
+enum CallLogType {
+  CALLLOGTYPE_ISCALLINGANSWERED = 0;
+  CALLLOGTYPE_ISCALLEDANSWERED = 1;
+  CALLLOGTYPE_ISCALLINGNOANSWER = 2;
+  CALLLOGTYPE_ISCALLEDNOANSWER = 3;
+  CALLLOGTYPE_ANSWERED = 4;
+}
+
+enum CallLogDirectionType {
+  CALLLOGDIRECTIONTYPE_INCOMINGANDOUTGOING = 0;
+  CALLLOGDIRECTIONTYPE_OUTGOING = 1;
+  CALLLOGDIRECTIONTYPE_INCOMING = 2;
+}
+
+enum AuthenticationType {
+  AUTHENTICATIONTYPE_BASIC = 0;
+  AUTHENTICATIONTYPE_AUTHENTICATIONPORTAL = 1;
+}
+
+message DeviceS {
+  CallStateEnum callState = 1; 
+  int32 queueLength = 2;
+  bool dND = 3;
+  bool forwarded = 4;
+  bool isGroupMember = 5;
+  AgentStateEnum agentState = 6; 
+  bool isPriorityCalls = 7;
+  string deviceId = 8;
+  int32 noOfHeld = 9;
+  DeviceTypeEnum deviceType = 10; 
+  DeviceSubTypeEnum subType = 11; 
+  DeviceStateEnum deviceState = 12; 
+  string connectorName = 13;
+  bool mute = 14;
+}
+
+message DeviceM {
+  DeviceConnectionCollection connectionList = 1;
+}
+
+message DeviceL {
+  DeviceTransferedConnectionCollection transferList = 1;
+  int32 forwardType = 2;
+  string forwardedTo = 3;
+  string transferredTo = 4;
+  bool remoteOfficeEnabled = 5;
+  bool remoteOfficeActive = 6;
+  string remoteOfficeNumber = 7;
+  bool outboundCallerIdEnabled = 8;
+  string outboundCallerId = 9;
+}
+
+message DeviceTransferedConnection {
+  string callId = 1;
+  string deviceId = 2;
+  string transferredTo = 3;
+  CallStateEnum state = 4; 
+  string callingDevice = 5;
+  string calledDevice = 6;
+  bool isMonitored = 7;
+  google.protobuf.Timestamp callCreatedTime = 8;
+  google.protobuf.Timestamp connectionCreatedTime = 9;
+  google.protobuf.Timestamp createdTime = 10;
+}
+
+message DeviceTransferedConnectionCollection {
+    repeated DeviceTransferedConnection Items = 1;
+}
+
+message DeviceConnection {
+  string callId = 1;
+  CallStateEnum state = 2; 
+  string callingDevice = 3;
+  string calledDevice = 4;
+  CallStateEnum remoteState = 5; 
+  google.protobuf.Timestamp callCreatedTime = 6;
+  google.protobuf.Timestamp connectionCreatedTime = 7;
+  google.protobuf.Timestamp createdTime = 8;
+}
+
+message DeviceConnectionCollection {
+    repeated DeviceConnection Items = 1;
+}
+
+message LyncState {
+  string sipAddress = 1;
+  uint32 availability = 2;
+  string availabilityName = 3;
+  int32 deviceType = 4;
+  string deviceTypeName = 5;
+  string location = 6;
+  string personalNote = 7;
+  string outOfOfficeNote = 8;
+  string activityToken = 9;
+}
+
+message ResourceDetail {
+  int32 recid = 1;
+  int32 ownerId = 2;
+  ResourceDetailTypeEnum detailType = 3; 
+  uint32 detailSubtype = 4;
+  string parameter = 5;
+  string value = 6;
+  bool enabled = 7;
+  bool default = 8;
+  bool changed = 9;
+  int32 sortOrder = 10;
+  bool privateInfo = 11;
+  bool externalMonitor = 12;
+}
+
+message ResourceDetailCollection {
+    repeated ResourceDetail Items = 1;
+}
+
+message Resource {
+  int32 recId = 1;
+  string userId = 2;
+  string firstName = 3;
+  string lastName = 4;
+  ResourceDetailCollection detailCollection = 5;
+  bool hasRemoteCallingRights = 6;
+  bool hasNumberLog = 7;
+  bool logExternalCalls = 8;
+  bool synchronizeCalendar = 9;
+  bool useAttachments = 10;
+  bool requireAttachment = 11;
+  bool hasSendSmsAnonomousRights = 12;
+  string userImageVersion = 13;
+}
+
+message ResourceCollection {
+    repeated Resource Items = 1;
+}
+
+message CallerHistory {
+  string deviceId = 1;
+  google.protobuf.Timestamp callTime = 2;
+}
+
+message CallerHistoryCollection {
+    repeated CallerHistory Items = 1;
+}
+
+message ReservationDetail {
+  ReservationSettingTypeEnum settingType = 1; 
+  string paramName = 2;
+  string paramValue = 3;
+}
+
+message ReservationDetailCollection {
+    repeated ReservationDetail Items = 1;
+}
+
+message Reservation {
+  int32 globalId = 1;
+  int32 id = 2;
+  string key = 3;
+  int32 resourceId = 4;
+  int32 startCode = 5;
+  string subject = 6;
+  string location = 7;
+  google.protobuf.Timestamp startTime = 8;
+  google.protobuf.Timestamp endTime = 9;
+  PendingStateEnum pendingState = 10; 
+  string pendingError = 11;
+  ReservationTypeEnum reservationType = 12; 
+  ReservationDetail details = 13;
+  EndTypeEnum endType = 14; 
+  bool history = 15;
+  bool deleteWhenSent = 16;
+  AppointmentTypeEnum appointmentType = 17; 
+  ScopeTypeEnum scope = 18; 
+  ClientTypeEnum madeFrom = 19; 
+  string originSystem = 20;
+  OriginExecutionEnum originExecution = 21; 
+  int32 originResourceId = 22;
+  string attachment = 23;
+  string serviceCode = 24;
+}
+
+message ReservationCollection {
+    repeated Reservation Items = 1;
+}
+
+message ReservationUser {
+  int32 recordId = 1;
+  string userKey = 2;
+  bool located = 3;
+  string locatedError = 4;
+  bool syncronize = 5;
+  int32 instanceRecId = 6;
+  ReservationCollection reservationList = 7;
+}
+
+message NotifyCommand {
+  NotifyCommandEnum operation = 1; 
+}
+
+message StaticData {
+  ResourceCollection resourceList = 1;
+  LyncStateCollection lyncStateList = 2;
+  SmallDeviceList smallDeviceList = 3;
+  LargeDeviceList largeDeviceList = 4;
+  ReservationCollection stateCurrentList = 5;
+  StateCollection stateList = 6;
+  TemplateList templateList = 7;
+}
+
+message LyncStateCollection {
+    repeated LyncState Items = 1;
+}
+
+message State {
+  int32 stateId = 1;
+  StateDetail detail = 2;
+  string caption = 3;
+  string shortName = 4;
+  uint32 sortOrder = 5;
+  EndingTimeEnum expectedEnd = 6; 
+  StateLengthEnum stateLength = 7; 
+  EndStampEnum endStamp = 8; 
+  uint32 optionsDugiIkkiSett = 9;
+  StateTypeEnum stateType = 10; 
+  StateClassEnum stateClass = 11; 
+  int32 suggestNextProfile = 12;
+  string suggestNextProfileName = 13;
+  uint32 stateColor = 14;
+  CallStatisticsTypeEnum callStatisticsType = 15; 
+}
+
+message StateCollection {
+    repeated State Items = 1;
+}
+
+message StateDetail {
+  int32 stateId = 1;
+  int32 suggestedLength = 2;
+  SuggestedRuleEnum suggestRoundRule = 3; 
+  SuggestedRoundTypeEnum suggestRoundType = 4; 
+  string description = 5;
+  string location = 6;
+  ResourceDetailLinkEnum forwardToDevice = 7; 
+  string forwardToNumber = 8;
+  ForwardTypeEnum forwardToType = 9; 
+  DNDTypeEnum dNDType = 10; 
+  int32 publicStateId = 11;
+  int32 publishedStateId = 12;
+}
+
+message StateDetailCollection {
+    repeated StateDetail Items = 1;
+}
+
+message SmallDeviceList {
+    repeated DeviceS Items = 1;
+}
+
+message LargeDeviceList {
+    repeated DeviceL Items = 1;
+}
+
+message ChallengeResponse {
+  string nonce = 1;
+  string noncePassword = 2;
+  string user = 3;
+  int32 userRecId = 4;
+  bool useWindowsAuthentication = 5;
+  ExpectedResponse expectedResponse = 6; 
+  ResponseCoding hashCoding = 7; 
+  ChallengeReason challengeReason = 8; 
+  string authenticationToken = 9;
+  AuthenticationType authenticationType = 10; 
+  string authenticationPortalURL = 11;
+}
+
+message Template {
+  int32 recId = 1;
+  string name = 2;
+  string shortName = 3;
+  int32 nextProfileId = 4;
+  StateDetail current = 5;
+  StateDetail next = 6;
+  int32 sortOrder = 7;
+  EndTypeEnum endType = 8; 
+  int32 quickStateOrder = 9;
+  bool quickStateActive = 10;
+  bool quickStateShowStateDialog = 11;
+  int32 taskbarOrder = 12;
+  bool taskbarActive = 13;
+  bool activateFromClient = 14;
+  bool activateFromCalendar = 15;
+  bool activateFromSMS = 16;
+  bool activateFromSwitchBoard = 17;
+  bool activateFromSmartClient = 18;
+  bool active = 19;
+}
+
+message TemplateList {
+    repeated Template Items = 1;
+}
+
+message KeyValue {
+  string key = 1;
+  string value = 2;
+}
+
+message KeyValueList {
+    repeated KeyValue Items = 1;
+}
+
+message ProxyCommand {
+  string commandType = 1;
+  KeyValueList commandParams = 2;
+}
+
+message ReservationUserList {
+    repeated ReservationUser Items = 1;
+}
+
+message LoginData {
+  string userName = 1;
+  string userPassword = 2;
+  string serverUri = 3;
+  string serverName = 4;
+  int32 serverPort = 5;
+  bool dataValidated = 6;
+}
+
+message UserPreferences {
+  bool showProfileImagesInContactsList = 1;
+}
+
+message ConnectionStartup {
+  int32 netVersion = 1;
+  ClientTypeEnum connectionType = 2; 
+  string instanceName = 3;
+  string clientDescription = 4;
+  string machineName = 5;
+  string clientVersion = 6;
+}
+
+message ProxyCommandResult {
+  bool result = 1;
+  string resultMessage = 2;
+  int32 resultMessageID = 3;
+  KeyValueList resultParams = 4;
+  int32 requestCommandMessageId = 5;
+  string requestCommandType = 6;
+  KeyValueList requestCommandParams = 7;
+}
+
+message UserImage {
+  int32 userRecId = 1;
+  string userImage = 2;
+  string userImageVersion = 3;
+}
+
+message UserImageList {
+    repeated UserImage Items = 1;
+}
+
+message NumberLog {
+  int32 recID = 1;
+  string deviceID = 2;
+  string phoneNumber = 3;
+  string phoneNumberOwner = 4;
+  CallLogType logType = 5; 
+  CallLogDirectionType direction = 6; 
+  google.protobuf.Timestamp startTime = 7;
+  google.protobuf.Timestamp endTime = 8;
+}
+
+message NumberLogList {
+    repeated NumberLog Items = 1;
+}
+
+message UserNumberLog {
+  int32 userRecID = 1;
+  NumberLogList numberLogList = 2;
+}
+
+message UserAttachmentsDefinition {
+  int32 resourceId = 1;
+  string definitionXML = 2;
+}
+
+message UserAttachmentsData {
+  int32 resourceID = 1;
+  string stateID = 2;
+  string attachmentId = 3;
+  string parentFieldId = 4;
+  string parentId = 5;
+  string dataXML = 6;
+  string clientId = 7;
+  string parentUserData = 8;
+}
+
+message UserAttachmentsDataLastUsed {
+  google.protobuf.Timestamp lastUsed = 1;
+  string dataXML = 2;
+}
+
+message UserAttachmentsDataLastUsedCollection {
+    repeated UserAttachmentsDataLastUsed Items = 1;
+}

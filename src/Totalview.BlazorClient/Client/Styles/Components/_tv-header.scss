@@ -1,0 +1,45 @@
+﻿@import "../variables";
+
+.tv-header {
+    background-color: white;
+    height: 110px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+
+    .tv-header-inner {
+        display: flex;
+        margin: 15px 10px;
+    }
+
+    .profile-image {
+        background-color: #eeeeee;
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+
+        i {
+            color: white;
+            font-size: 2em;
+        }
+    }
+
+    .user-info {
+        .user-info-name {
+            color: #002d62;
+        }
+
+        .user-info-state {
+            font-size: 0.7em;
+        }
+
+        .user-info-state-color {
+            display: inline-block;
+            height: 16px;
+            margin-right: 0;
+        }
+    }
+}

@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\totalview.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="Google.Protobuf" Version="3.15.5" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.35.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.35.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.36.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="5.0.0" />
+    <PackageReference Include="Scrutor" Version="3.3.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    <PackageReference Include="Telerik.UI.for.Blazor" Version="2.22.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\totalview.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Totalview.BlazorMvvm\Totalview.BlazorMvvm.csproj" />
+  </ItemGroup>
+
+  <!--<DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />-->
+  <ItemGroup>
+    <Watch Include="..\**\*.razor" />
+    <Watch Include="..\**\*.scss" />
+    <Watch Include="..\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Watch Remove="Messages\ReservationAddedNotification.cs" />
+    <Watch Remove="Messages\ReservationRemoveddNotification.cs" />
+    <Watch Remove="Messages\ReservationUpdatedNotification.cs" />
+    <Watch Remove="Messages\ResourcesAddedNotification.cs" />
+    <Watch Remove="Messages\ResourcesRemovedNotification.cs" />
+    <Watch Remove="Messages\ResourcesUpdatedNotification.cs" />
+    <Watch Remove="Services\DialogService.cs" />
+    <Watch Remove="Services\ShowSetMyStateNotification.cs" />
+    <Watch Remove="ViewModels\Windows\SetCurrentComponentViewModel.cs" />
+    <Watch Remove="ViewModels\Windows\SetCurrentStateWindowViewModel.cs" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,34 @@
+﻿@namespace Totalview.BlazorClient.Client.Components
+@inherits MvvmComponentBase<SetCurrentStateWindowViewModel>
+
+<TelerikWindow Class="tv-window" Draggable="false" Width="500px" Height="650px" Centered="true" @bind-Visible="ViewModel.IsVisible"  Modal="true">
+    <WindowTitle>
+        <div style="height:140px; padding: 13px 10px;">
+            <div style="color:#002d62;">
+                Bartal Clementsen
+            </div>
+
+            <div style="font-size: 0.75em;">
+                In
+            </div>
+
+            <div style="font-size: 0.75em;">
+                Subject 1
+            </div>
+
+            <div style="font-size: 0.75em;">
+                Some location
+            </div>
+
+            <div style="font-size: 0.75em;">
+                16:30
+            </div>
+        </div>
+    </WindowTitle>
+    <WindowActions>
+        <WindowAction Name="Close" />
+    </WindowActions>
+    <WindowContent>
+        <SetCurrentComponent></SetCurrentComponent>
+    </WindowContent>
+</TelerikWindow>

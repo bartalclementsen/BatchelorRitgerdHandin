@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "name": "totalview.blazorclient.client",
+  "private": true,
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "5.15.2"
+  }
+}

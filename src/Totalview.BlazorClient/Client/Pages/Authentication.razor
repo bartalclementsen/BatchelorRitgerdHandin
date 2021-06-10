@@ -1,0 +1,27 @@
+﻿@page "/authentication/{action}"
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [AllowAnonymous]
+
+<RemoteAuthenticatorView Action="@Action">
+    <CompletingLogOut>
+        <p>Ritar út. Vinarliga bíða við...</p>
+    </CompletingLogOut>
+    <LogOutSucceeded>
+        <p>Tú ert nú ritað/ur út</p>
+        <a href="/">Aftur til síðuna</a>
+    </LogOutSucceeded>
+    <LogOutFailed>
+        <p>Kundi ikki rita út. Vinarliga royn eina fer afturat</p>
+        <a href="/">Aftur til síðuna</a>
+    </LogOutFailed>
+    <LoggingIn>
+        <p>Ritar inn. Vinarliga bíða við...</p>
+    </LoggingIn>
+    <CompletingLoggingIn>
+        <p>Tú ert nú innritað/ur. Vinarliga bíða við...</p>
+    </CompletingLoggingIn>
+</RemoteAuthenticatorView>
+
+@code {
+    [Parameter] public string Action { get; set; }
+}

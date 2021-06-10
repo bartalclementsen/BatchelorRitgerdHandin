@@ -1,0 +1,57 @@
+﻿@namespace Totalview.BlazorClient.Client.Components
+@inherits MvvmComponentBase<ResourcesViewModel>
+
+<div class="tv-resources">
+    <TelerikGrid Data=@ViewModel.Resources
+                 Class="tv-resource-table"
+                 Height="100%"
+                 SelectionMode="@GridSelectionMode.None"
+                 Sortable="true"
+                 Resizable="true"
+                 SortMode="@SortMode.Single"
+                 Pageable="false">
+
+        <GridToolBar>
+            <div class="tv-resource-table-toolbar">
+                <GridSearchBox DebounceDelay="500"></GridSearchBox>
+            </div>
+        </GridToolBar>
+        <GridColumns>
+            <GridColumn Field="@nameof(ResourceViewModel.FullName)" Width="150px" Title="Navn" Locked="false">
+
+                <Template>
+                    @{
+                        var resource = context as ResourceViewModel;
+                        <div class="tv-resource-table-name-column">
+                            <i class="fas fa-adjust" style="color:green;"></i>
+                            <span class="tv-resource-table-state" style="background-color:@resource.CurrentStateColor;">&nbsp;</span>
+                            @resource.FullName
+                        </div>
+                    }
+                </Template>
+            </GridColumn>
+
+            <GridColumn Field="@nameof(ResourceViewModel.Identification)" Width="100px" Title="Eyðmerking" />
+
+            <GridColumn Field="@nameof(ResourceViewModel.CurrentState)" Width="100px" Title="Støða" />
+            <GridColumn Field="@nameof(ResourceViewModel.CurrentStateSubject)" Width="100px" Title="Boð" />
+            <GridColumn Field="@nameof(ResourceViewModel.CurrentStateStart)" Width="100px" Title="Byrja" />
+            <GridColumn Field="@nameof(ResourceViewModel.CurrentStateEnd)" Width="100px" Title="Endi" />
+
+            <GridColumn Field="" Width="140px" Title="Sip" />
+            <GridColumn Field="" Width="100px" Title="Title" />
+            <GridColumn Field="" Width="100px" Title="Fartelefon" />
+            <GridColumn Field="" Width="100px" Title="Heimatelefon" />
+            <GridColumn Field="" Width="100px" Title="Teldupostur" />
+            <GridColumn Field="" Width="100px" Title="Staður" />
+            <GridColumn Field="" Width="100px" Title="Raðnummar" />
+            <GridColumn Field="" Width="100px" Title="Kalendari í dag" />
+            <GridColumn Field="" Width="100px" Title="Teams støða" />
+            <GridColumn Field="" Width="100px" Title="Arbeiðsútgreining" />
+            <GridColumn Field="" Width="100px" Title="Ringjibólkur" />
+            <GridColumn Field="" Width="100px" Title="Arbeiðstelefon" />
+            <GridColumn Field="" Width="100px" Title="Deild" />
+            <GridColumn Field="" Width="100px" Title="Førleikar" />
+        </GridColumns>
+    </TelerikGrid>
+</div>

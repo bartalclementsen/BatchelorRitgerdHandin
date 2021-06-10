@@ -1,0 +1,41 @@
+﻿@namespace Totalview.BlazorClient.Client.Components
+@inherits MvvmComponentBase<NavMenuViewModel>
+
+<div class="tv-nav-menu">
+    <ul>
+        <li>
+            <button @onclick="ViewModel.ChangeStatedClicked">
+                <i class="fas fa-user-edit"></i>
+                Broyt støðu
+            </button>
+        </li>
+        <li>
+            <button>
+                <i class="far fa-calendar"></i>
+                Ger avtalu
+            </button>
+        </li>
+        <li>
+            <button>
+                <i class="far fa-address-book"></i>
+                Telefonbólk
+            </button>
+        </li>
+        <li>
+            <button>
+                <i class="far fa-question-circle"></i>
+                Hjálp
+            </button>
+        </li>
+        <li>
+            <button>
+                <i class="fas fa-cog"></i>
+                Uppsetan
+            </button>
+        </li>
+    </ul>
+</div>
+
+@code {
+
+}

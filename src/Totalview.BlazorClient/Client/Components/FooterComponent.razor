@@ -1,0 +1,9 @@
+﻿@namespace Totalview.BlazorClient.Client.Components
+@inherits MvvmComponentBase<FooterViewModel>
+
+<div class="tv-footer">
+    <span class="tv-footer-logged-in-user">@ViewModel.FullName</span>
+    <button class="tv-footer-signout-button" @onclick="ViewModel.SignoutButton_Clicked">
+        Rita út
+    </button>
+</div>
